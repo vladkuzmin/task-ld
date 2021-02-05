@@ -1,0 +1,15 @@
+.form {
+    input,
+    textarea {
+        display: block;
+    }
+}
+
+.input {
+    &.is-error {
+        input,
+        textarea {
+            border-color: red;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: $font-size;
+    font-family: $font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+    background: $white;
+    background: linear-gradient(219.64deg, #FFFFFF 17.98%, #F0F2FD 78.94%), #F3F1F3;
+    background-attachment: fixed;
+}

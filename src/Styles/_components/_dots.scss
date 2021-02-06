@@ -1,0 +1,14 @@
+.dots {
+    img {
+        position: absolute;
+        &:first-child {
+            top: 21px;
+            left: -43px;
+        }
+
+        &:last-child {
+            bottom: -66px;
+            left: -65px;
+        }
+    }
+}

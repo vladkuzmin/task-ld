@@ -1,6 +1,6 @@
 import React from 'react';
-import './Form.scss';
 import { Validations } from '../Helpers/Validations';
+import Chevron from '../Images/Chevron.svg';
 
 function Form() {
 
@@ -71,16 +71,16 @@ function Form() {
     }
 
     const classError = (errors) => {
-        if (!errors) return
-        return errors.length > 0  ? 'is-error' : null
+        if (!errors) return ''
+        return errors.length > 0  ? 'is-error' : ''
     }
 
     const getErrors = (errors) => {
         if (!errors) return null
         return (
-            <ul className="errors">
+            <ul className="form__input__errors">
                 { errors.map((err, i) => {return (
-                    <div key={i}>{ err }</div>
+                    <li key={i}>{ err }</li>
                 )})}
             </ul>
         )
@@ -88,64 +88,61 @@ function Form() {
 
     return (
 
-        <>  
-
+        <>    
             
-            
-            {/* FORM */}
+            { !submitted ? 
+                <form onSubmit={ handleSubmit } className="form">
+                        
+                    <div className={`form__input -col ${classError(inputs.name.errors)}`}>
+                        <label>
+                            <span>Name</span>
+                            <input 
+                                name="name"
+                                type="text"
+                                value = { inputs.name.value }
+                                onChange = { handleInput }
+                                placeholder="Your name"
+                            />
+                        </label>
+                        { getErrors(inputs.name.errors) }
+                    </div>
+                    
+                    <div className={`form__input -col ${classError(inputs.email.errors)}`}>
+                        <label>
+                            <span>Email</span>
+                            <input 
+                                name="email"
+                                type="text"
+                                value = { inputs.email.value }
+                                onChange = { handleInput }
+                                placeholder="Your email"
+                            />
+                        </label>
+                        { getErrors(inputs.email.errors) }
+                    </div>
+                    
+                    <div className={`form__input ${classError(inputs.message.errors)}`}>
+                        <label>
+                            <span>Text message</span>
+                            <textarea
+                                name="message"
+                                value = { inputs.message.value }
+                                onChange = { handleInput }
+                                placeholder="Your message"
+                            ></textarea>
+                        </label>
+                        { getErrors(inputs.message.errors) }
+                    </div>
 
-            <div className="form">
-                { !submitted ? 
-                    <form onSubmit={ handleSubmit }>
-                        <div>
-                            
-                            <div className={`input ${classError(inputs.name.errors)}`}>
-                                <label>
-                                    <span>Name</span>
-                                    <input 
-                                        name="name"
-                                        type="text"
-                                        value = { inputs.name.value }
-                                        onChange = { handleInput }
-                                    />
-                                </label>
-                                { getErrors(inputs.name.errors) }
-                            </div>
-                            
-                            <div className={`input ${classError(inputs.email.errors)}`}>
-                                <label>
-                                    <span>Email</span>
-                                    <input 
-                                        name="email"
-                                        type="text"
-                                        value = { inputs.email.value }
-                                        onChange = { handleInput }
-                                    />
-                                </label>
-                                { getErrors(inputs.email.errors) }
-                            </div>
-                            
-                            <div className={`input ${classError(inputs.message.errors)}`}>
-                                <label>
-                                    <span>Text message</span>
-                                    <textarea
-                                        name="message"
-                                        value = { inputs.message.value }
-                                        onChange = { handleInput }
-                                    ></textarea>
-                                </label>
-                                { getErrors(inputs.message.errors) }
-                            </div>
+                    <button type="submit" class="form__input _submit">
+                        <span>Send Message</span>
+                        <img src={ Chevron } alt=""/>
+                    </button>
 
-                        </div>
-                        <button type="submit">Submit</button>
-                    </form>
-                    : <div>Thank you for your message</div>
-                }
-            </div>
+                </form>
+                : <div className="form__message">Thank you for your message</div>
+            }
 
-            {/* END form*/}
-        
         </>
         
     )

@@ -1,0 +1,23 @@
+h1 {
+    font-size: fontSize(56);
+    letter-spacing: 0.2rem;
+    font-family: $font-title;
+
+    @media (max-width: $tablet) {
+        font-size: fontSize(32);
+    }
+}
+
+p {
+    line-height: 150%;
+    color: $grey;
+    &.-lg {
+        font-size: fontSize(18);
+    }
+}
+
+a {
+    color: $purple;
+    font-weight: 700;
+    text-decoration: none;
+}
